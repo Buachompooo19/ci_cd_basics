@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 app.post('/cicd/github-cicd', (req, res) => {
 	const { ref } = req.body;
-	console.log(ref);
+	console.log(req.body);
 	if (ref === 'refs/heads/main') {
 		exec('git pull origin main && pm2 restart cicd_app');
 	}
