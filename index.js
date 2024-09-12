@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 app.post('/cicd/github-cicd', (req, res) => {
 	const { ref } = req.body;
-
+	console.log(ref);
 	if (ref === 'refs/heads/main') {
 		exec('git pull origin main && pm2 restart cicd_app');
 	}
@@ -22,4 +22,4 @@ app.get('/cicd/time', (req, res) => {
 
 app.listen(5000, () => {
 	console.log("Listening on Port 5000...");
-})
+});
