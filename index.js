@@ -14,10 +14,11 @@ function verifySignature(req, res, buf, encoding) {
         console.log('No signature found on request');
         return false;
     }
-
+console.log ("Bua")
     const hmac = crypto.createHmac('sha256', process.env.REPO_WEBHOOK_SECRET);
     const digest = 'sha256=' + hmac.update(buf).digest('hex');
-
+console.log (digest)
+console.log (signature)
     if (signature !== digest) {
         console.log('Signature does not match');
         return false;
